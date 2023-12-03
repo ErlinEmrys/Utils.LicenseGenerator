@@ -12,10 +12,10 @@ jobs:
 
       steps:
          -  name: Checkout repository
-            uses: actions/checkout@v2
+            uses: actions/checkout@v4
 
          -  name: Setup .NET Core
-            uses: actions/setup-dotnet@v1
+            uses: actions/setup-dotnet@v3
             with:
                dotnet-version: 8.x.x
 
@@ -25,11 +25,11 @@ jobs:
             run: |
                FULL_VERSION=$(git describe --tags --dirty --long --abbrev=10)
                VERSION=$(echo $FULL_VERSION | sed 's/\(v\)\([0-9][0-9]*\).*\.\([0-9][0-9]*\).*\.\([0-9][0-9]*\).*/\2.\3.\4/')
-               echo ::set-output name=gitfullversion::$FULL_VERSION
-               echo ::set-output name=gitversion::$VERSION
+               echo "gitFullVersion=$FULL_VERSION" >> $GITHUB_OUTPUT
+               echo "gitShortVersion=$VERSION" >> $GITHUB_OUTPUT
 
          -  name: Build
-            run: dotnet build --configuration Release -p:AssemblyVersion=${{ steps.gitVersion.outputs.gitversion }} -p:FileVersion=${{ steps.gitVersion.outputs.gitversion }} -p:InformationalVersion=${{ steps.gitVersion.outputs.gitfullversion }} -p:PackageVersion=${{ steps.gitVersion.outputs.gitversion }}
+            run: dotnet pack --configuration Release -p:AssemblyVersion=${{ steps.gitVersion.outputs.gitShortVersion }} -p:FileVersion=${{ steps.gitVersion.outputs.gitShortVersion }} -p:InformationalVersion=${{ steps.gitVersion.outputs.gitFullVersion }} -p:PackageVersion=${{ steps.gitVersion.outputs.gitShortVersion }}
 
          -  name: Publish nuget
             run: dotnet nuget push "LicenseGenerator/bin/Release/*.nupkg" -k ${{secrets.NugetOrgToken}} -s https://api.nuget.org/v3/index.json

@@ -12,16 +12,16 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
-		<DebugType>embedded</DebugType>
-		<IncludeSymbols>true</IncludeSymbols>
-		<EmbedAllSources>true</EmbedAllSources>
+		<DebugType>portable</DebugType>
+		<IncludeSymbols>True</IncludeSymbols>
+		<EmbedAllSources>True</EmbedAllSources>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
 		<RunAnalyzers>True</RunAnalyzers>
 		<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
 		<RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
 		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
 
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 		<Authors>Erlin Emrys</Authors>
 		<Copyright>© Erlin Emrys</Copyright>
