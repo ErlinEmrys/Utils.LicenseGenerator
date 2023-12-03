@@ -31,6 +31,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>Erlin;.NetCore;License;Build</PackageTags>
+		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificBuildOutput);GetMyPackageFiles</TargetsForTfmSpecificContentInPackage>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -42,7 +43,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommandLineParser" Version="2.9.1"/>
-		<PackageReference Include="Erlin.Lib.Common" Version="2.0.1"/>
+		<PackageReference Include="Erlin.Lib.Common" Version="2.0.3"/>
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
 		<PackageReference Include="Serilog" Version="3.0.1"/>
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.1.0"/>
@@ -54,4 +55,16 @@
 		<!--<None Include="Nuget\_._" Pack="True" PackagePath="lib/$(TargetFramework)/"/>-->
 		<Content Include="GenerateLicense.targets" Pack="True" />
 	</ItemGroup>
+	
+	<Target Name="GetMyPackageFiles" DependsOnTargets="Publish">
+		<ItemGroup>
+			<TfmSpecificPackageFiles Include="$(PublishDir)/**/*.*"/>
+		</ItemGroup>
+		<!--All published file in different tools/tfm-->
+		<ItemGroup>
+			<TfmSpecificPackageFile Include="@(TfmSpecificPackageFiles)">
+				<PackagePath>tools/$(targetframework)/%(TfmSpecificPackageFiles.RecursiveDir)%(TfmSpecificPackageFiles.Filename)%(TfmSpecificPackageFiles.Extension)</PackagePath>
+			</TfmSpecificPackageFile>
+		</ItemGroup>
+	</Target>
 </Project>

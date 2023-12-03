@@ -17,11 +17,11 @@ namespace Erlin.Utils.LicenseGenerator;
 public static class Program
 {
 	public const int PRG_EXIT_OK = 0;
-	public const int PRG_EXIT_LOG_INIT = 1;
-	public const int PRG_EXIT_CONSOLE_ERROR = 2;
-	public const int PRG_EXIT_LOG_FATAL = 3;
-	public const int PRG_EXIT_ARGUMENTS_ERROR = 4;
-	public const int PRG_EXIT_PACKAGES_ERROR = 5;
+	public const int PRG_EXIT_LOG_INIT = 100;
+	public const int PRG_EXIT_CONSOLE_ERROR = 200;
+	public const int PRG_EXIT_LOG_FATAL = 300;
+	public const int PRG_EXIT_ARGUMENTS_ERROR = 400;
+	public const int PRG_EXIT_PACKAGES_ERROR = 500;
 
 	/// <summary>
 	/// Entry point

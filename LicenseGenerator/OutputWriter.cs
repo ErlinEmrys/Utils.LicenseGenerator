@@ -95,7 +95,7 @@ public static class OutputWriter
 						break;
 
 					default:
-						await stream.WriteLineAsync( "ERROR", 2 );
+						await stream.WriteLineAsync( $"{fPackage.LicenseDataType}: {fPackage.License}", 2 );
 						break;
 				}
 			}
