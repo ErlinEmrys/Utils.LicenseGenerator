@@ -119,7 +119,7 @@ public static class OutputWriter
 	/// Writes header to MD
 	/// </summary>
 	private static async Task WriteHeader(
-		this StreamWriter stream, string text, char headerSeparator,
+		this TextWriter stream, string text, char headerSeparator,
 		int indentation = 0 )
 	{
 		await stream.WriteLineAsync( text, indentation );
@@ -130,7 +130,7 @@ public static class OutputWriter
 	/// <summary>
 	/// Writes multiline text to MD
 	/// </summary>
-	private static async Task WriteComplex( this StreamWriter stream, string text, int indentation = 0 )
+	private static async Task WriteComplex( this TextWriter stream, string text, int indentation = 0 )
 	{
 		string[] lines = text.Split( EnvHelper.NewLineBreakers, StringSplitOptions.None );
 
@@ -143,7 +143,7 @@ public static class OutputWriter
 	/// <summary>
 	/// Writes paragraph to MD
 	/// </summary>
-	private static async Task WriteParagraph( this StreamWriter stream, string? text, int indentation = 0 )
+	private static async Task WriteParagraph( this TextWriter stream, string? text, int indentation = 0 )
 	{
 		await stream.WriteLineAsync( text, indentation );
 		await stream.WriteLineAsync( null, indentation );
@@ -152,7 +152,7 @@ public static class OutputWriter
 	/// <summary>
 	/// Writes text line to MD
 	/// </summary>
-	private static async Task WriteLineAsync( this StreamWriter stream, string? text, int indentation )
+	private static async Task WriteLineAsync( this TextWriter stream, string? text, int indentation )
 	{
 		await stream.WriteIndentation( indentation );
 		await stream.WriteLineAsync( text );
@@ -161,7 +161,7 @@ public static class OutputWriter
 	/// <summary>
 	/// Writes indentation characters to MD
 	/// </summary>
-	private static async Task WriteIndentation( this StreamWriter stream, int indentation )
+	private static async Task WriteIndentation( this TextWriter stream, int indentation )
 	{
 		if( indentation > 0 )
 		{

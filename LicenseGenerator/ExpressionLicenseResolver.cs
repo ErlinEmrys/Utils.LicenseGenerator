@@ -1,5 +1,3 @@
-using Erlin.Lib.Common.Threading;
-
 namespace Erlin.Utils.LicenseGenerator;
 
 /// <summary>
