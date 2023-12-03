@@ -1,0 +1,59 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<RootNamespace>Erlin.Utils.LicenseGenerator</RootNamespace>
+		<AssemblyName>Erlin.Utils.LicenseGenerator</AssemblyName>
+		<TargetFramework>net8.0</TargetFramework>
+		<OutputType>Exe</OutputType>
+
+		<PackAsTool>true</PackAsTool>
+		<ToolCommandName>licgen</ToolCommandName>
+
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<AppendTargetFrameworkToOutputPath>False</AppendTargetFrameworkToOutputPath>
+		<DebugType>embedded</DebugType>
+		<IncludeSymbols>true</IncludeSymbols>
+		<EmbedAllSources>true</EmbedAllSources>
+		<ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+		<RunAnalyzers>True</RunAnalyzers>
+		<RunAnalyzersDuringBuild>True</RunAnalyzersDuringBuild>
+		<RunAnalyzersDuringLiveAnalysis>False</RunAnalyzersDuringLiveAnalysis>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<Authors>Erlin Emrys</Authors>
+		<Copyright>© Erlin Emrys</Copyright>
+		<Description>.NET Core build tool for automatic licenses handling</Description>
+		<PackageProjectUrl>https://github.com/ErlinEmrys/Utils.LicenseGenerator</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/ErlinEmrys/Utils.LicenseGenerator.git</RepositoryUrl>
+		<RepositoryType>GitHub</RepositoryType>
+		<PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>icon.png</PackageIcon>
+		<PackageTags>Erlin;.NetCore;License;Build</PackageTags>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="$(SolutionDir)LICENSE.md" Pack="true" PackagePath="" Visible="false"/>
+		<None Include="$(SolutionDir)LICENSE_THIRD_PARTY.md" Pack="true" PackagePath="" Visible="false"/>
+		<None Include="$(SolutionDir)README.md" Pack="true" PackagePath="" Visible="false"/>
+		<None Include="Nuget\icon.png" Pack="true" PackagePath=""/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommandLineParser" Version="2.9.1"/>
+		<PackageReference Include="Erlin.Lib.Common" Version="2.0.1"/>
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
+		<PackageReference Include="Serilog" Version="3.0.1"/>
+		<PackageReference Include="Serilog.Sinks.Console" Version="4.1.0"/>
+		<PackageReference Include="SimpleExec" Version="11.0.0"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="build\**" Pack="True" PackagePath="build/$(TargetFramework)/"/>
+		<None Include="Nuget\_._" Pack="True" PackagePath="lib/$(TargetFramework)/"/>
+		<None Include="Nuget\GenerateLicense.targets" Pack="True" PackagePath="tools/"/>
+	</ItemGroup>
+</Project>

@@ -1,0 +1,31 @@
+# Build results
+[Bb]in/
+[Oo]bj/
+source_link.g.json
+
+# User-specific files
+.vs/
+*.suo
+*.user
+*.sln.docstates
+
+# Publish Web Output
+*.[Pp]ublish.xml
+*.azurePubxml
+
+# Roslyn cache directories
+*.ide/
+
+# InteliJ IDEA / Rider
+.idea/
+
+# ReSharper is a .NET coding add-in
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# JustCode is a .NET coding addin-in
+.JustCode
+
+# DotCover is a Code Coverage Tool
+*.dotCover

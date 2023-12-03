@@ -1,0 +1,10 @@
+<Project>
+	<PropertyGroup>
+		<LicGenExe>dotnet "$(MSBuildThisFileDirectory)/$(TargetFramework)/any/Erlin.Utils.LicenseGenerator.dll"</LicGenExe>
+	</PropertyGroup>
+
+	<Target Name="GenerateLicense" AfterTargets="CoreCompile">
+		<Message Text="++++++++++++ GENERATE LICENSE +++++++++++" Importance="high"/>
+		<Exec Command="$(LicGenExe) -s $(SolutionDir)"/>
+	</Target>
+</Project>
