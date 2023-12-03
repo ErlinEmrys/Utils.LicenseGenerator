@@ -5,6 +5,6 @@
 
 	<Target Name="GenerateLicense" BeforeTargets="CoreCompile">
 		<Message Text="++++++++++++ GENERATING LICENSES +++++++++++" Importance="high"/>
-		<Exec Command="$(LicGen) --s $(SolutionDir)"/>
+		<Exec Command="$(LicGen) --s $(SolutionDir)" Timeout="0"/>
 	</Target>
 </Project>
