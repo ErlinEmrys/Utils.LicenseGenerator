@@ -3,7 +3,7 @@
 		<LicGen>$([MSBuild]::NormalizeDirectory("$(MSBuildThisFileDirectory)..\..\tools\$(TargetFramework)"))Erlin.Utils.LicenseGenerator.dll</LicGen>
 	</PropertyGroup>
 
-	<Target Name="GenerateLicense" BeforeTargets="CoreCompile">
+	<Target Name="AfterResolveReferences">
 		<Message Text="++++++++++++ GENERATING LICENSES +++++++++++" Importance="high"/>
 		<ExecAsync FilePath="dotnet" Arguments="$(LicGen) --s $(SolutionDir)"/>
 	</Target>
@@ -20,7 +20,8 @@
 			<Code Type="Fragment" Language="cs">
 				<![CDATA[
   System.Diagnostics.ProcessStartInfo processStartInfo = new System.Diagnostics.ProcessStartInfo(FilePath, Arguments);
-  processStartInfo.UseShellExecute = true;
+  processStartInfo.UseShellExecute = false;
+  processStartInfo.CreateNoWindow = true;
   System.Diagnostics.Process.Start(processStartInfo);
   ]]>
 			</Code>
