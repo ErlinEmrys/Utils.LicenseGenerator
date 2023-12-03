@@ -1,10 +1,29 @@
 <Project>
 	<PropertyGroup>
-		<LicGen>dotnet $([MSBuild]::NormalizeDirectory("$(MSBuildThisFileDirectory)..\..\tools\$(TargetFramework)"))Erlin.Utils.LicenseGenerator.dll</LicGen>
+		<LicGen>$([MSBuild]::NormalizeDirectory("$(MSBuildThisFileDirectory)..\..\tools\$(TargetFramework)"))Erlin.Utils.LicenseGenerator.dll</LicGen>
 	</PropertyGroup>
 
 	<Target Name="GenerateLicense" BeforeTargets="CoreCompile">
 		<Message Text="++++++++++++ GENERATING LICENSES +++++++++++" Importance="high"/>
-		<Exec Command="$(LicGen) --s $(SolutionDir)" Timeout="0"/>
+		<ExecAsync FilePath="dotnet" Arguments="$(LicGen) --s $(SolutionDir)"/>
 	</Target>
+
+	<!--Launch a Process in Parallel-->
+	<UsingTask TaskName="ExecAsync" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+		<ParameterGroup>
+			<!--The file path is the full path to the executable file to run-->
+			<FilePath ParameterType="System.String" Required="true"/>
+			<!--The arguments should contain all the command line arguments that need to be sent to the application-->
+			<Arguments ParameterType="System.String" Required="true"/>
+		</ParameterGroup>
+		<Task>
+			<Code Type="Fragment" Language="cs">
+				<![CDATA[
+  System.Diagnostics.ProcessStartInfo processStartInfo = new System.Diagnostics.ProcessStartInfo(FilePath, Arguments);
+  processStartInfo.UseShellExecute = true;
+  System.Diagnostics.Process.Start(processStartInfo);
+  ]]>
+			</Code>
+		</Task>
+	</UsingTask>
 </Project>
