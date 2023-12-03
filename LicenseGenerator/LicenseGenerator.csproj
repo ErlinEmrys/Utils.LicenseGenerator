@@ -1,13 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
+		<PackageId>Erlin.Utils.LicenseGenerator</PackageId>
 		<RootNamespace>Erlin.Utils.LicenseGenerator</RootNamespace>
 		<AssemblyName>Erlin.Utils.LicenseGenerator</AssemblyName>
 		<TargetFramework>net8.0</TargetFramework>
 		<OutputType>Exe</OutputType>
-
-		<PackAsTool>true</PackAsTool>
-		<ToolCommandName>licgen</ToolCommandName>
 
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -53,7 +51,7 @@
 
 	<ItemGroup>
 		<None Include="build\**" Pack="True" PackagePath="build/$(TargetFramework)/"/>
-		<None Include="Nuget\_._" Pack="True" PackagePath="lib/$(TargetFramework)/"/>
-		<None Include="Nuget\GenerateLicense.targets" Pack="True" PackagePath="tools/"/>
+		<!--<None Include="Nuget\_._" Pack="True" PackagePath="lib/$(TargetFramework)/"/>-->
+		<Content Include="GenerateLicense.targets" Pack="True" />
 	</ItemGroup>
 </Project>

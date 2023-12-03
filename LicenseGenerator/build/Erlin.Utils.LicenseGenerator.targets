@@ -1,3 +1,3 @@
 <Project>
-	<Import Project="$(MSBuildThisFileDirectory)/../Nuget/GenerateLicense.targets"/>
+	<Import Project="$(MSBuildThisFileDirectory)/../../content/GenerateLicense.targets"/>
 </Project>
