@@ -131,7 +131,7 @@ public static class Program
 		await OutputWriter.WriteOutputJson( args, result );
 
 		return result.Packages.Any(
-			p => p.LicenseDataType is LicenseDataType.EnumEmptyError or LicenseDataType.Error )
+			p => p.LicenseDataType is LicenseDataType.EnumNullError or LicenseDataType.Error )
 			? PRG_EXIT_PACKAGES_ERROR : PRG_EXIT_OK;
 	}
 }

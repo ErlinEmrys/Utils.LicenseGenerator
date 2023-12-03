@@ -167,7 +167,7 @@ public static class PackageResolver
 			}
 		}
 
-		if( ( info.LicenseDataType == LicenseDataType.Error ) && nuget.LicenseUrl.IsNotEmpty() )
+		if( ( info.LicenseDataType == LicenseDataType.EnumNullError ) && nuget.LicenseUrl.IsNotEmpty() )
 		{
 			// 3. URL
 			info.LicenseDataType = LicenseDataType.Url;
@@ -186,7 +186,7 @@ public static class PackageResolver
 			}
 		}
 
-		if( info.LicenseDataType == LicenseDataType.EnumEmptyError )
+		if( info.LicenseDataType == LicenseDataType.EnumNullError )
 		{
 			info.LicenseDataType = LicenseDataType.Error;
 			info.License =

@@ -38,7 +38,7 @@ Third party licenses
 >> 
 > 
 
-> Erlin.Lib.Common [2.0.1]
+> Erlin.Lib.Common [2.0.3]
 > ------------------------
 > 
 > Homepage: <https://github.com/ErlinEmrys/Lib.Common>

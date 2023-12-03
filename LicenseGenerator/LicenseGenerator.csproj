@@ -31,14 +31,18 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageIcon>icon.png</PackageIcon>
 		<PackageTags>Erlin;.NetCore;License;Build</PackageTags>
+		<IncludeBuildOutput>False</IncludeBuildOutput>
 		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificBuildOutput);GetMyPackageFiles</TargetsForTfmSpecificContentInPackage>
 	</PropertyGroup>
-
+	
 	<ItemGroup>
 		<None Include="$(SolutionDir)LICENSE.md" Pack="true" PackagePath="" Visible="false"/>
 		<None Include="$(SolutionDir)LICENSE_THIRD_PARTY.md" Pack="true" PackagePath="" Visible="false"/>
 		<None Include="$(SolutionDir)README.md" Pack="true" PackagePath="" Visible="false"/>
-		<None Include="Nuget\icon.png" Pack="true" PackagePath=""/>
+		<None Include="NuGet\icon.png" Pack="true" PackagePath="" />
+		<None Include="build\**" Pack="True" PackagePath="build/$(TargetFramework)/"/>
+      <None Include="NuGet\_._" Pack="True" PackagePath="lib/$(TargetFramework)/" />
+      <None Include="NuGet\Erlin.Utils.LicenseGenerator.targets" Pack="True" PackagePath="build/$(TargetFramework)/" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -49,17 +53,12 @@
 		<PackageReference Include="Serilog.Sinks.Console" Version="4.1.0"/>
 		<PackageReference Include="SimpleExec" Version="11.0.0"/>
 	</ItemGroup>
-
-	<ItemGroup>
-		<None Include="build\**" Pack="True" PackagePath="build/$(TargetFramework)/"/>
-		<!--<None Include="Nuget\_._" Pack="True" PackagePath="lib/$(TargetFramework)/"/>-->
-		<Content Include="GenerateLicense.targets" Pack="True" />
-	</ItemGroup>
 	
 	<Target Name="GetMyPackageFiles" DependsOnTargets="Publish">
 		<ItemGroup>
 			<TfmSpecificPackageFiles Include="$(PublishDir)/**/*.*"/>
 		</ItemGroup>
+		
 		<!--All published file in different tools/tfm-->
 		<ItemGroup>
 			<TfmSpecificPackageFile Include="@(TfmSpecificPackageFiles)">
