@@ -32,4 +32,10 @@ public class ProgramArgs
 		"om", Default = "LICENSE_THIRD_PARTY.md",
 		HelpText = "Path to output MD file" )]
 	public string? OutputMDPath { get; set; }
+
+	/// <summary>
+	/// Whether the program should be writing more info to the log
+	/// </summary>
+	[Option( "log", HelpText = "Rise log level to be more verbose" )]
+	public bool LogVerbose { get; set; }
 }

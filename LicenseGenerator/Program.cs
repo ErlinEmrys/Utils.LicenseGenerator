@@ -6,6 +6,8 @@ using CommandLine;
 using Erlin.Lib.Common;
 
 using Serilog;
+using Serilog.Core;
+using Serilog.Events;
 
 using Log = Erlin.Lib.Common.Log;
 
@@ -58,11 +60,16 @@ public static class Program
 	/// </summary>
 	private static async Task<int> Run( IEnumerable<string> args )
 	{
-		LoggerConfiguration logConfig = new();
+		LoggingLevelSwitch logLevelSwitch = new();
+		logLevelSwitch.MinimumLevel = LogEventLevel.Warning;
+
 #if DEBUG
-		logConfig.MinimumLevel.Debug();
+		logLevelSwitch.MinimumLevel = LogEventLevel.Debug;
 #endif
-		logConfig.WriteTo.Console(
+
+		LoggerConfiguration logConfig = new();
+		logConfig.MinimumLevel.ControlledBy( logLevelSwitch )
+				.WriteTo.Console(
 						theme: Log.DefaultConsoleColorTheme, outputTemplate: Log.DefaultOutputTemplate,
 						formatProvider: CultureInfo.InvariantCulture )
 				.Enrich.With<ExceptionLogEnricher>();
@@ -73,27 +80,35 @@ public static class Program
 		{
 			ParserResult<ProgramArgs>? parsedArgs = Parser.Default.ParseArguments<ProgramArgs>( args );
 			return await parsedArgs.MapResult(
-				Program.RunApp, errors =>
+				a =>
+				{
+					if( a.LogVerbose )
+					{
+						logLevelSwitch.MinimumLevel = LogEventLevel.Verbose;
+					}
+
+					return Program.RunApp( a );
+				}, errors =>
 				{
 					foreach( Error fArgError in errors )
 					{
 						switch( fArgError )
 						{
 							case TokenError tokenError:
-								Log.Err(
+								Log.Inf(
 									"Command line argument error: {Token} {Tag}", tokenError.Token, fArgError.Tag );
 
 								break;
 
 							case NamedError namedError:
-								Log.Err(
+								Log.Inf(
 									"Command line argument error: {Name} {Tag}", namedError.NameInfo.NameText,
 									fArgError.Tag );
 
 								break;
 
 							default:
-								Log.Err( "Command line argument error: {Tag}", fArgError.Tag );
+								Log.Inf( "Command line argument error: {Tag}", fArgError.Tag );
 								break;
 						}
 					}

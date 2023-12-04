@@ -5,25 +5,24 @@
 
 	<Target Name="AfterResolveReferences">
 		<Message Text="++++++++++++ GENERATING LICENSES +++++++++++" Importance="high"/>
-		<ExecAsync FilePath="dotnet" Arguments="$(LicGen) --s $(SolutionDir)"/>
+		<ExecAsync FilePath="dotnet" Arguments="$(LicGen) --s $(SolutionDir) $(LicGenArguments)"/>
 	</Target>
 
-	<!--Launch a Process in Parallel-->
+	<!--Parallel Task-->
 	<UsingTask TaskName="ExecAsync" TaskFactory="RoslynCodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll">
 		<ParameterGroup>
-			<!--The file path is the full path to the executable file to run-->
 			<FilePath ParameterType="System.String" Required="true"/>
-			<!--The arguments should contain all the command line arguments that need to be sent to the application-->
 			<Arguments ParameterType="System.String" Required="true"/>
 		</ParameterGroup>
+		
 		<Task>
 			<Code Type="Fragment" Language="cs">
 				<![CDATA[
-  System.Diagnostics.ProcessStartInfo processStartInfo = new System.Diagnostics.ProcessStartInfo(FilePath, Arguments);
-  processStartInfo.UseShellExecute = false;
-  processStartInfo.CreateNoWindow = true;
-  System.Diagnostics.Process.Start(processStartInfo);
-  ]]>
+	System.Diagnostics.ProcessStartInfo processStartInfo = new System.Diagnostics.ProcessStartInfo(FilePath, Arguments);
+	processStartInfo.UseShellExecute = false;
+	processStartInfo.CreateNoWindow = true;
+	System.Diagnostics.Process.Start(processStartInfo);
+	]]>
 			</Code>
 		</Task>
 	</UsingTask>
