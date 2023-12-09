@@ -1,22 +1,22 @@
 namespace Erlin.Utils.LicenseGenerator;
 
 /// <summary>
-/// Result of the license generator
+///    Result of the license generator
 /// </summary>
 public class GeneratorResult
 {
 	/// <summary>
-	/// Path to packages cache
+	///    Path to packages cache
 	/// </summary>
 	required public string PackagesPath { get; set; }
 
 	/// <summary>
-	/// List of packages that project depends upon
+	///    List of packages that project depends upon
 	/// </summary>
 	public List<PackageInfo> Packages { get; } = new();
 
 	/// <summary>
-	/// Adds packages to this result object
+	///    Adds packages to this result object
 	/// </summary>
 	public void AddPackages( List<PackageInfo> list )
 	{

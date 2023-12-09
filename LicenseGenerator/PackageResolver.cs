@@ -13,7 +13,7 @@ using SimpleExec;
 namespace Erlin.Utils.LicenseGenerator;
 
 /// <summary>
-/// Class for resolving Nuget packages
+///    Class for resolving Nuget packages
 /// </summary>
 public static class PackageResolver
 {
@@ -22,12 +22,12 @@ public static class PackageResolver
 	private const string CMD_ARGS_LIST = "list package --include-transitive --format json";
 
 	/// <summary>
-	/// *.nuspec file serializer
+	///    *.nuspec file serializer
 	/// </summary>
 	public static XmlSerializer NuspecSerializer { get; } = new( typeof( NuspecPackage ) );
 
 	/// <summary>
-	/// Resolves all packages of the project
+	///    Resolves all packages of the project
 	/// </summary>
 	public static async Task<GeneratorResult> ResolvePackages()
 	{
@@ -50,7 +50,7 @@ public static class PackageResolver
 	}
 
 	/// <summary>
-	/// Utility for resolving physical path to local packages cache
+	///    Utility for resolving physical path to local packages cache
 	/// </summary>
 	private static async Task<string> ResolvePackagesPath()
 	{
@@ -76,7 +76,7 @@ public static class PackageResolver
 	}
 
 	/// <summary>
-	/// Deserialize *.nuspec file for selected package
+	///    Deserialize *.nuspec file for selected package
 	/// </summary>
 	private static void ReadNuspecFile( PackageInfo package )
 	{
@@ -100,7 +100,7 @@ public static class PackageResolver
 	}
 
 	/// <summary>
-	/// Reads info from *.nuspec package
+	///    Reads info from *.nuspec package
 	/// </summary>
 	private static void FillInfo( NuspecPackage nuget, PackageInfo info )
 	{
@@ -111,7 +111,7 @@ public static class PackageResolver
 	}
 
 	/// <summary>
-	/// Reads info from *.nuspec package metadata
+	///    Reads info from *.nuspec package metadata
 	/// </summary>
 	public static void FillInfo( NuspecMetadata nuget, PackageInfo info )
 	{
@@ -128,7 +128,7 @@ public static class PackageResolver
 	}
 
 	/// <summary>
-	/// Reads license data from *.nuspec package metadata
+	///    Reads license data from *.nuspec package metadata
 	/// </summary>
 	private static void FillLicense( NuspecMetadata nuget, PackageInfo info )
 	{
@@ -195,7 +195,7 @@ public static class PackageResolver
 	}
 
 	/// <summary>
-	/// Reads basic packages info from JSON list
+	///    Reads basic packages info from JSON list
 	/// </summary>
 	private static void ConvertPackagesJson( GeneratorResult result, JObject json )
 	{
@@ -239,7 +239,7 @@ public static class PackageResolver
 	}
 
 	/// <summary>
-	/// Reads basic packages info from JSON list
+	///    Reads basic packages info from JSON list
 	/// </summary>
 	private static void PackageArrToInfo(
 		GeneratorResult genResult, Dictionary<string, PackageInfo> result, JArray? array )
@@ -270,7 +270,7 @@ public static class PackageResolver
 	}
 
 	/// <summary>
-	/// Executes shell command
+	///    Executes shell command
 	/// </summary>
 	/// <param name="cmd">Command to execute</param>
 	/// <param name="cmdArgs">Command arguments</param>

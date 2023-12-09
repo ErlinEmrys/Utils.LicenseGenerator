@@ -1,12 +1,12 @@
 namespace Erlin.Utils.LicenseGenerator;
 
 /// <summary>
-/// Resolver for packaged files
+///    Resolver for packaged files
 /// </summary>
 public static class FileResolver
 {
 	/// <summary>
-	/// All common license file names
+	///    All common license file names
 	/// </summary>
 	private static string[] LicenseFileNames { get; } =
 	{
@@ -14,7 +14,7 @@ public static class FileResolver
 	};
 
 	/// <summary>
-	/// All common notice file names
+	///    All common notice file names
 	/// </summary>
 	private static string[] NoticeFileNames { get; } =
 	{
@@ -22,7 +22,7 @@ public static class FileResolver
 	};
 
 	/// <summary>
-	/// All commonly used file extensions
+	///    All commonly used file extensions
 	/// </summary>
 	private static string[] FileExtensions { get; } =
 	{
@@ -30,7 +30,7 @@ public static class FileResolver
 	};
 
 	/// <summary>
-	/// Attempt to retrieve content of LICENSE file
+	///    Attempt to retrieve content of LICENSE file
 	/// </summary>
 	public static string? GetLicenseFile( string? nugetPath, string? licenseFilePath )
 	{
@@ -38,7 +38,7 @@ public static class FileResolver
 	}
 
 	/// <summary>
-	/// Attempt to retrieve content of NOTICE file
+	///    Attempt to retrieve content of NOTICE file
 	/// </summary>
 	public static string? GetNoticeFile( string? nugetPath )
 	{
@@ -46,7 +46,7 @@ public static class FileResolver
 	}
 
 	/// <summary>
-	/// Attempt to retrieve content of a file
+	///    Attempt to retrieve content of a file
 	/// </summary>
 	private static string? GetFile(
 		string? nugetPath, string? filePath, IEnumerable<string> fileNames, IEnumerable<string> fileExtensions )

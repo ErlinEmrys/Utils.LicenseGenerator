@@ -3,12 +3,12 @@ using System.Globalization;
 namespace Erlin.Utils.LicenseGenerator;
 
 /// <summary>
-/// Simple utilities
+///    Simple utilities
 /// </summary>
 public static class Utils
 {
 	/// <summary>
-	/// Makes text lowercase
+	///    Makes text lowercase
 	/// </summary>
 	public static string ToLower( string text )
 	{
@@ -16,7 +16,7 @@ public static class Utils
 	}
 
 	/// <summary>
-	/// Check if entered text is valid URL
+	///    Check if entered text is valid URL
 	/// </summary>
 	public static bool CheckUrl( string text )
 	{

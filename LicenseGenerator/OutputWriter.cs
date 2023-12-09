@@ -5,12 +5,12 @@ using Newtonsoft.Json;
 namespace Erlin.Utils.LicenseGenerator;
 
 /// <summary>
-/// Output writer
+///    Output writer
 /// </summary>
 public static class OutputWriter
 {
 	/// <summary>
-	/// Writes output to JSON file
+	///    Writes output to JSON file
 	/// </summary>
 	public static async Task WriteOutputJson( ProgramArgs args, GeneratorResult result )
 	{
@@ -36,7 +36,7 @@ public static class OutputWriter
 	}
 
 	/// <summary>
-	/// Writes output to MD file
+	///    Writes output to MD file
 	/// </summary>
 	public static async Task WriteOutputMD( ProgramArgs args, GeneratorResult result )
 	{
@@ -116,7 +116,7 @@ public static class OutputWriter
 	}
 
 	/// <summary>
-	/// Writes header to MD
+	///    Writes header to MD
 	/// </summary>
 	private static async Task WriteHeader(
 		this TextWriter stream, string text, char headerSeparator,
@@ -128,7 +128,7 @@ public static class OutputWriter
 	}
 
 	/// <summary>
-	/// Writes multiline text to MD
+	///    Writes multiline text to MD
 	/// </summary>
 	private static async Task WriteComplex( this TextWriter stream, string text, int indentation = 0 )
 	{
@@ -141,7 +141,7 @@ public static class OutputWriter
 	}
 
 	/// <summary>
-	/// Writes paragraph to MD
+	///    Writes paragraph to MD
 	/// </summary>
 	private static async Task WriteParagraph( this TextWriter stream, string? text, int indentation = 0 )
 	{
@@ -150,7 +150,7 @@ public static class OutputWriter
 	}
 
 	/// <summary>
-	/// Writes text line to MD
+	///    Writes text line to MD
 	/// </summary>
 	private static async Task WriteLineAsync( this TextWriter stream, string? text, int indentation )
 	{
@@ -159,7 +159,7 @@ public static class OutputWriter
 	}
 
 	/// <summary>
-	/// Writes indentation characters to MD
+	///    Writes indentation characters to MD
 	/// </summary>
 	private static async Task WriteIndentation( this TextWriter stream, int indentation )
 	{

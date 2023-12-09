@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 namespace Erlin.Utils.LicenseGenerator;
 
 /// <summary>
-/// XML *.nuspec package representation
+///    XML *.nuspec package representation
 /// </summary>
 [XmlRoot( ElementName = "package" )]
 public class NuspecPackage
@@ -13,7 +13,7 @@ public class NuspecPackage
 }
 
 /// <summary>
-/// XML *.nuspec package metadata representation
+///    XML *.nuspec package metadata representation
 /// </summary>
 [XmlRoot( ElementName = "metadata" )]
 public class NuspecMetadata
@@ -44,7 +44,7 @@ public class NuspecMetadata
 }
 
 /// <summary>
-/// XML *.nuspec package license data representation
+///    XML *.nuspec package license data representation
 /// </summary>
 [XmlRoot( ElementName = "license" )]
 public class NuspecLicense
@@ -57,7 +57,7 @@ public class NuspecLicense
 }
 
 /// <summary>
-/// XML *.nuspec package repository data representation
+///    XML *.nuspec package repository data representation
 /// </summary>
 [XmlRoot( ElementName = "repository" )]
 public class NuspecRepository

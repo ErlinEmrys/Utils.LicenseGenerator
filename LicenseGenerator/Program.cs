@@ -14,7 +14,7 @@ using Log = Erlin.Lib.Common.Log;
 namespace Erlin.Utils.LicenseGenerator;
 
 /// <summary>
-/// Main program
+///    Main program
 /// </summary>
 public static class Program
 {
@@ -26,7 +26,7 @@ public static class Program
 	public const int PRG_EXIT_PACKAGES_ERROR = 500;
 
 	/// <summary>
-	/// Entry point
+	///    Entry point
 	/// </summary>
 	/// <param name="args">Command line arguments</param>
 	public static async Task<int> Main( string[] args )
@@ -56,7 +56,7 @@ public static class Program
 	}
 
 	/// <summary>
-	/// Logging and error handling
+	///    Logging and error handling
 	/// </summary>
 	private static async Task<int> Run( IEnumerable<string> args )
 	{
@@ -128,7 +128,7 @@ public static class Program
 	}
 
 	/// <summary>
-	/// Application
+	///    Application
 	/// </summary>
 	private static async Task<int> RunApp( ProgramArgs args )
 	{

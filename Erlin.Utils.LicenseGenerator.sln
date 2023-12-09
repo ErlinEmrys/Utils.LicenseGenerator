@@ -8,7 +8,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution 
 		.gitignore = .gitignore
 		LICENSE.md = LICENSE.md
 		README.md = README.md
-		LICENSE_THIRD_PARTY.md = LICENSE_THIRD_PARTY.md
+		LICENSE_THIRD_PARTIES.md = LICENSE_THIRD_PARTIES.md
 		.github\workflows\release.yml = .github\workflows\release.yml
 	EndProjectSection
 EndProject

@@ -1,7 +1,7 @@
 namespace Erlin.Utils.LicenseGenerator;
 
 /// <summary>
-/// Data type of the licenses
+///    Data type of the licenses
 /// </summary>
 public enum LicenseDataType
 {

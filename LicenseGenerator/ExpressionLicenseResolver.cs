@@ -1,12 +1,12 @@
 namespace Erlin.Utils.LicenseGenerator;
 
 /// <summary>
-/// Resolver for license expressions
+///    Resolver for license expressions
 /// </summary>
 public static class ExpressionLicenseResolver
 {
 	/// <summary>
-	/// Resolve license by expression
+	///    Resolve license by expression
 	/// </summary>
 	public static string Resolve( string expression )
 	{

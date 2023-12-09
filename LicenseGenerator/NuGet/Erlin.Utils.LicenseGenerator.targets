@@ -14,7 +14,7 @@
 			<FilePath ParameterType="System.String" Required="true"/>
 			<Arguments ParameterType="System.String" Required="true"/>
 		</ParameterGroup>
-		
+
 		<Task>
 			<Code Type="Fragment" Language="cs">
 				<![CDATA[
