@@ -9,6 +9,9 @@ namespace Erlin.Utils.LicenseGenerator;
 /// </summary>
 public static class OutputWriter
 {
+	public const char MD_HEADER_FIRST_SEPARATOR = '=';
+	public const char MD_HEADER_SECOND_SEPARATOR = '-';
+
 	/// <summary>
 	///    Writes output to JSON file
 	/// </summary>
@@ -51,13 +54,13 @@ public static class OutputWriter
 
 		await using StreamWriter stream = new( filePath );
 
-		await stream.WriteHeader( "Third party licenses", '=' );
+		await stream.WriteHeader( "Third party licenses", MD_HEADER_FIRST_SEPARATOR );
 		await stream.WriteParagraph( "*This software stands on the shoulders of the following giants:*" );
 		await stream.WriteLineAsync();
 
 		foreach( PackageInfo fPackage in result.Packages )
 		{
-			await stream.WriteHeader( $"{fPackage.Name} [{fPackage.Version}]", '-', 1 );
+			await stream.WriteHeader( $"{fPackage.Name} [{fPackage.Version}]", MD_HEADER_SECOND_SEPARATOR, 1 );
 
 			if( fPackage.Homepage.IsNotEmpty() )
 			{
@@ -154,19 +157,22 @@ public static class OutputWriter
 	/// </summary>
 	private static async Task WriteLineAsync( this TextWriter stream, string? text, int indentation )
 	{
-		await stream.WriteIndentation( indentation );
+		await stream.WriteIndentation( text, indentation );
 		await stream.WriteLineAsync( text );
 	}
 
 	/// <summary>
 	///    Writes indentation characters to MD
 	/// </summary>
-	private static async Task WriteIndentation( this TextWriter stream, int indentation )
+	private static async Task WriteIndentation( this TextWriter stream, string? text, int indentation )
 	{
 		if( indentation > 0 )
 		{
 			await stream.WriteAsync( new string( '>', indentation ) );
-			await stream.WriteAsync( " " );
+			if( text.IsNotEmpty() )
+			{
+				await stream.WriteAsync( " " );
+			}
 		}
 	}
 }

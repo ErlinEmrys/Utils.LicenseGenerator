@@ -35,7 +35,7 @@ public static class PackageResolver
 		string packagesPath = await PackageResolver.ResolvePackagesPath();
 		GeneratorResult result = new()
 		{
-			PackagesPath = packagesPath,
+			PackagesPath = packagesPath
 		};
 
 		// Retrieve and parse all packages for a project
@@ -261,7 +261,7 @@ public static class PackageResolver
 				{
 					Name = id,
 					Version = version,
-					Parent = genResult,
+					Parent = genResult
 				};
 
 				result.TryAdd( info.Id, info );

@@ -10,7 +10,7 @@ public static class FileResolver
 	/// </summary>
 	private static string[] LicenseFileNames { get; } =
 	{
-		"LICENSE", "LICENCE",
+		"LICENSE", "LICENCE"
 	};
 
 	/// <summary>
@@ -18,7 +18,7 @@ public static class FileResolver
 	/// </summary>
 	private static string[] NoticeFileNames { get; } =
 	{
-		"NOTICE",
+		"NOTICE"
 	};
 
 	/// <summary>
@@ -26,7 +26,7 @@ public static class FileResolver
 	/// </summary>
 	private static string[] FileExtensions { get; } =
 	{
-		string.Empty, ".md", ".txt",
+		string.Empty, ".md", ".txt"
 	};
 
 	/// <summary>
@@ -34,7 +34,8 @@ public static class FileResolver
 	/// </summary>
 	public static string? GetLicenseFile( string? nugetPath, string? licenseFilePath )
 	{
-		return GetFile( nugetPath, licenseFilePath, FileResolver.LicenseFileNames, FileResolver.FileExtensions );
+		return FileResolver.GetFile(
+			nugetPath, licenseFilePath, FileResolver.LicenseFileNames, FileResolver.FileExtensions );
 	}
 
 	/// <summary>
@@ -42,7 +43,7 @@ public static class FileResolver
 	/// </summary>
 	public static string? GetNoticeFile( string? nugetPath )
 	{
-		return GetFile( nugetPath, null, FileResolver.NoticeFileNames, FileResolver.FileExtensions );
+		return FileResolver.GetFile( nugetPath, null, FileResolver.NoticeFileNames, FileResolver.FileExtensions );
 	}
 
 	/// <summary>

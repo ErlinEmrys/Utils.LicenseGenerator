@@ -9,5 +9,5 @@ public enum LicenseDataType
 	Error = 1,
 	Text = 2,
 	Expression = 3,
-	Url = 4,
+	Url = 4
 }
