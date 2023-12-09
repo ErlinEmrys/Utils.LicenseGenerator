@@ -13,7 +13,7 @@ public class GeneratorResult
 	/// <summary>
 	///    List of packages that project depends upon
 	/// </summary>
-	public List<PackageInfo> Packages { get; } = new();
+	public List<PackageInfo> Packages { get; } = [];
 
 	/// <summary>
 	///    Adds packages to this result object
